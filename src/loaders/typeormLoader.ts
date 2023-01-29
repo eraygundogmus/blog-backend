@@ -14,7 +14,7 @@ export const typeormLoader: MicroframeworkLoader = async (
   const connectionOptions = Object.assign(loadedConnectionOptions, {
     type: env.db.type as any,
     host: env.db.host,
-    port: env.db.port,
+    port: "/tmp/mysql.sock",
     username: env.db.username,
     password: env.db.password,
     database: env.db.database,

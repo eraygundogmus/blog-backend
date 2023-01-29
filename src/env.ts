@@ -29,6 +29,7 @@ export const env = {
     description: (pkg as any).description,
     host: getOsEnv("APP_HOST"),
     port: normalizePort(process.env.PORT || getOsEnv("APP_PORT")),
+    routePrefix: getOsEnv("APP_ROUTE_PREFIX"),
     dirs: {
       migrations: getOsPaths("TYPEORM_MIGRATIONS"),
       migrationsDir: getOsPath("TYPEORM_MIGRATIONS_DIR"),

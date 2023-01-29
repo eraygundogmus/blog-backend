@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "NODE_ENV=development nodemon --exec ts-node src/app.ts ",
+    "dev": "NODE_ENV=development nodemon --exec ts-node src/app.ts",
     "build": "tsc"
   },
   "devDependencies": {
@@ -30,7 +30,7 @@
     "routing-controllers": "^0.10.1",
     "routing-controllers-openapi": "^4.0.0",
     "typedi": "^0.10.0",
-    "typeorm": "^0.3.11",
+    "typeorm": "^0.2.5",
     "typeorm-typedi-extensions": "^0.4.1",
     "uuid": "^9.0.0"
   }
