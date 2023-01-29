@@ -1,8 +1,10 @@
 import { bootstrapMicroframework } from "microframework-w3tec";
-import { expressLoader } from "./loaders/express";
+import { expressLoader } from "./loaders/expressLoader";
+import { typeormLoader } from "./loaders/typeormLoader";
 import * as env from "./env";
+
 bootstrapMicroframework({
-  loaders: [expressLoader],
+  loaders: [expressLoader, typeormLoader],
 })
   .then(() => {
     console.log("Application is up and running!");
