@@ -1,6 +1,8 @@
-FROM node:alpine
+FROM node:18-alpine
 WORKDIR /app
-COPY . /app
+COPY package.json .
 RUN yarn install
-RUN yarn start
-EXPOSE 8080
+COPY . .
+EXPOSE 3000
+VOLUME [ "/app/node_modules" ]
+CMD [ "yarn", "start" ]

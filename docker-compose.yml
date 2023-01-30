@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+      - "/app/node_modules"
+    depends_on:
+      - mysql_server
+  mysql_server:
+    image: mysql:8.0
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "${TYPEORM_ALLOW_EMPTY_PASSWORD}"
+      MYSQL_DATABASE: "${TYPEORM_DATABASE}"
+      MYSQL_USER: "${TYPEORM_USERNAME}"
+      MYSQL_PASSWORD: "${TYPEORM_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: "${TYPEORM_ROOT_PASSWORD}"
