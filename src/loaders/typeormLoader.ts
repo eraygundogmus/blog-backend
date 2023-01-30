@@ -24,10 +24,18 @@ export const typeormLoader: MicroframeworkLoader = async (
     migrations: env.app.dirs.migrations,
   });
 
-  const connection = await createConnection(connectionOptions);
-
-  if (settings) {
-    settings.setData("connection", connection);
-    settings.onShutdown(() => connection.close());
+  let isConnectedBefore = false;
+  while (!isConnectedBefore) {
+    try {
+      const connection = await createConnection(connectionOptions);
+      if (settings) {
+        settings.setData("connection", connection);
+        settings.onShutdown(() => connection.close());
+      }
+      break;
+    } catch (error) {
+      console.log("Retrying connection to database...");
+      await new Promise((resolve) => setTimeout(resolve, 5000));
+    }
   }
 };
