@@ -28,6 +28,7 @@ export const env = {
     version: (pkg as any).version,
     description: (pkg as any).description,
     host: getOsEnv("APP_HOST"),
+    schema: getOsEnv("APP_SCHEMA"),
     port: normalizePort(process.env.PORT || getOsEnv("APP_PORT")),
     routePrefix: getOsEnv("APP_ROUTE_PREFIX"),
     dirs: {
@@ -51,5 +52,11 @@ export const env = {
     database: getOsEnv("TYPEORM_DATABASE"),
     synchronize: toBool(getOsEnvOptional("TYPEORM_SYNCHRONIZE")),
     logging: getOsEnv("TYPEORM_LOGGING"),
+  },
+  swagger: {
+    enabled: toBool(getOsEnv("SWAGGER_ENABLED")),
+    route: getOsEnv("SWAGGER_ROUTE"),
+    username: getOsEnv("SWAGGER_USERNAME"),
+    password: getOsEnv("SWAGGER_PASSWORD"),
   },
 };
