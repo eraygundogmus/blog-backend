@@ -12,5 +12,5 @@ export class Bookmark {
 
   @IsNotEmpty()
   @Column()
-  public description: number;
+  public description: string;
 }

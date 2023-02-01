@@ -15,7 +15,7 @@ import {
 dotenv.config({
   path: path.join(
     process.cwd(),
-    `.env${process.env.NODE_ENV === "test" ? ".test" : ""}`
+    `.env${process.env.NODE_ENV && `.${process.env.NODE_ENV}`}`
   ),
 });
 

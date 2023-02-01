@@ -9,8 +9,8 @@ class BaseBookmark {
   @IsNotEmpty()
   public url: string;
 
-  @IsNumber()
-  public description: number;
+  @IsNotEmpty()
+  public description: string;
 }
 
 export class BookmarkResponse extends BaseBookmark {
@@ -31,6 +31,7 @@ export class BookmarkController {
   @Get()
   @ResponseSchema(BookmarkResponse, { isArray: true })
   public get(): Promise<Bookmark[]> {
+    console.log("get", this.BookmarkService);
     return this.BookmarkService.find();
   }
 
@@ -42,7 +43,6 @@ export class BookmarkController {
     const bookmark = new Bookmark();
     bookmark.url = body.url;
     bookmark.description = body.description;
-    bookmark.id = body.id;
 
     return this.BookmarkService.create(bookmark);
   }
