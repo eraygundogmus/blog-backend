@@ -6,8 +6,10 @@ import { expressLoader } from "./loaders/expressLoader";
 import { typeormLoader } from "./loaders/typeormLoader";
 import { swaggerLoader } from "./loaders/swaggerLoader";
 import { homeLoader } from "./loaders/homeLoader";
+import { iocLoader } from "./loaders/iocLoader";
+
 bootstrapMicroframework({
-  loaders: [expressLoader, typeormLoader, homeLoader, swaggerLoader],
+  loaders: [iocLoader, expressLoader, typeormLoader, homeLoader, swaggerLoader],
 })
   .then((app) => {
     console.log("Application is up and running!");

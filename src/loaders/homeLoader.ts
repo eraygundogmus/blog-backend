@@ -22,11 +22,5 @@ export const homeLoader: MicroframeworkLoader = (
         });
       }
     );
-
-    expressApp.listen(env.app.port, () => {
-      console.log(
-        `🚀 Server ready at http://localhost:${env.app.port}${env.app.routePrefix}`
-      );
-    });
   }
 };

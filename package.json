@@ -25,6 +25,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "es6-shim": "^0.35.7",
+    "event-dispatch": "^0.4.1",
     "express": "^4.18.2",
     "express-basic-auth": "^1.2.1",
     "microframework-w3tec": "^0.6.3",
@@ -33,9 +34,9 @@
     "routing-controllers": "^0.10.1",
     "routing-controllers-openapi": "^4.0.0",
     "swagger-ui-express": "^4.6.0",
-    "typedi": "^0.10.0",
+    "typedi": "^0.8.0",
     "typeorm": "^0.2.5",
-    "typeorm-typedi-extensions": "^0.4.1",
+    "typeorm-typedi-extensions": "^0.2.1",
     "uuid": "^9.0.0"
   }
 }

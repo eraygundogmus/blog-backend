@@ -1,4 +1,6 @@
 import { Service } from "typedi";
+import { OrmRepository } from "typeorm-typedi-extensions";
+
 import uuid from "uuid";
 
 import { Bookmark } from "../models/Bookmark";
@@ -6,9 +8,11 @@ import { BookmarkRepository } from "../repositories/BookmarkRepository";
 
 @Service()
 export class BookmarkService {
-  constructor(private bookmarkRepository: BookmarkRepository) {}
+  constructor(
+    @OrmRepository() private bookmarkRepository: BookmarkRepository
+  ) {}
 
-  public find(): Promise<Bookmark[]> {
+  public get(): any {
     return this.bookmarkRepository.find();
   }
 

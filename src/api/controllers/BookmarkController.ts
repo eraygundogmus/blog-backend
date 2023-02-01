@@ -1,9 +1,10 @@
-import { IsNotEmpty, IsNumber, IsUUID } from "class-validator";
+import { IsNotEmpty, IsUUID } from "class-validator";
 import { Body, Get, JsonController, Post } from "routing-controllers";
 import { OpenAPI, ResponseSchema } from "routing-controllers-openapi";
 
 import { BookmarkService } from "../../services/BookmarkService";
 import { Bookmark } from "../../models/Bookmark";
+import Container from "typedi";
 
 class BaseBookmark {
   @IsNotEmpty()
@@ -23,16 +24,18 @@ class CreateBookmarkBody extends BaseBookmark {
   public id: string;
 }
 
-@JsonController("/bookmarks")
+@JsonController("/bookmark")
 @OpenAPI({ security: [{ basicAuth: [] }] })
 export class BookmarkController {
-  constructor(private BookmarkService: BookmarkService) {}
+  constructor(private bookmarkService: BookmarkService) {
+    console.log("bookmarkcontroller: ", 1);
+    console.log("bookmarkcontroller: ", this.bookmarkService);
+  }
 
   @Get()
-  @ResponseSchema(BookmarkResponse, { isArray: true })
   public get(): Promise<Bookmark[]> {
-    console.log("get", this.BookmarkService);
-    return this.BookmarkService.find();
+    console.log("BookmarkController.get");
+    return this.bookmarkService.get();
   }
 
   @Post()
@@ -44,6 +47,6 @@ export class BookmarkController {
     bookmark.url = body.url;
     bookmark.description = body.description;
 
-    return this.BookmarkService.create(bookmark);
+    return this.bookmarkService.create(bookmark);
   }
 }

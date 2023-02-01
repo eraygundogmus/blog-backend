@@ -22,6 +22,13 @@ export const expressLoader: MicroframeworkLoader = (
       interceptors: env.app.dirs.interceptors,
     });
 
+    if (!env.isTest) {
+      const server = expressApp.listen(env.app.port);
+
+      settings.setData("express_server", server);
+    }
+
+    // Here we can set the data for other loaders
     settings.setData("express_app", expressApp);
   }
 };
