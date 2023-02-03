@@ -27,14 +27,10 @@ class CreateBookmarkBody extends BaseBookmark {
 @JsonController("/bookmark")
 @OpenAPI({ security: [{ basicAuth: [] }] })
 export class BookmarkController {
-  constructor(private bookmarkService: BookmarkService) {
-    console.log("bookmarkcontroller: ", 1);
-    console.log("bookmarkcontroller: ", this.bookmarkService);
-  }
+  constructor(private bookmarkService: BookmarkService) {}
 
   @Get()
   public get(): Promise<Bookmark[]> {
-    console.log("BookmarkController.get");
     return this.bookmarkService.get();
   }
 
